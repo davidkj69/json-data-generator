@@ -4,6 +4,13 @@
             "workflowFilename": "reference/data/customer/CustomerGenWorkflow.json"
         }],
     "producers": [{
+            "type": "kafka",
+            "broker.server": "bd01vox110.wellsfargo.com",
+            "broker.port": 6667,
+            "topic": "customer_raw",
+            "sync": false,
+            "flatten" : false
+    },{
         "type":"logger",
         "logger-name": "Generated-Logger"
     }]

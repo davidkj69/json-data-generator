@@ -47,6 +47,10 @@ public class DoubleType extends TypeHandler {
         } else if (launchArguments.length == 2) {
             min = Double.parseDouble(launchArguments[0]);
             max = Double.parseDouble(launchArguments[1]);
+        } else if (launchArguments.length == 3) {
+        	min = Double.parseDouble(launchArguments[0]);
+            max = Double.parseDouble(launchArguments[1]);
+            decimalPlaces = Integer.parseInt(launchArguments[2]);
         }
     }
 

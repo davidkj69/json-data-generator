@@ -62,7 +62,7 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="net.acesinc.data.json.generator.types.RandomTypeTest" name="testGetName" time="0"/>
   <testcase classname="net.acesinc.data.json.generator.types.RandomTypeTest" name="testMultiValueList" time="0"/>
   <testcase classname="net.acesinc.data.json.generator.types.RandomTypeTest" name="testSingleValueList" time="0"/>
+  <testcase classname="net.acesinc.data.json.generator.types.RandomTypeTest" name="testGetName" time="0"/>
 </testsuite>

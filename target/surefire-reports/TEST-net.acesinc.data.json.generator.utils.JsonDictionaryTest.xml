@@ -62,7 +62,7 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="net.acesinc.data.json.generator.utils.JsonDictionaryTest" name="toJsonTest" time="0.015"/>
-  <testcase classname="net.acesinc.data.json.generator.utils.JsonDictionaryTest" name="moreComplexTest" time="0.01"/>
+  <testcase classname="net.acesinc.data.json.generator.utils.JsonDictionaryTest" name="toJsonTest" time="0.018"/>
+  <testcase classname="net.acesinc.data.json.generator.utils.JsonDictionaryTest" name="moreComplexTest" time="0.007"/>
   <testcase classname="net.acesinc.data.json.generator.utils.JsonDictionaryTest" name="anotherTest" time="0"/>
 </testsuite>

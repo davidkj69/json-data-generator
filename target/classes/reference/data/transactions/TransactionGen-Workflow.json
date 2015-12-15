@@ -8,7 +8,7 @@
             "config": [{
             		"timestamp": "nowTimestamp()",
         			"account": "dictionary([account-numbers])",
-        			"amount" : "random(1.00, 500.00)",
+        			"amount" : "double(-90.0, 90.0, 2)",
         			"type" : "random('Debit','Credit')"
                 }],
             "duration": 0
