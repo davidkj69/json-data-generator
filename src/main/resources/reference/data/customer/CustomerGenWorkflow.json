@@ -1,0 +1,23 @@
+{
+    "eventFrequency": 40,
+    "varyEventFrequency": true,
+    "repeatWorkflow": true,
+    "timeBetweenRepeat": 150,
+    "varyRepeatFrequency": true,
+    "steps": [{
+            "config": [{
+                    "firstName": "dictionary([first-names])",
+        			"lastName": "dictionary([last-names])",
+        			"ssn": "dictionary([soc-security-nums])",
+        			"dob" : "formatted-date(\"1915/01/01\")",
+        			"email": "email()",
+        			"Addresses": [
+        			    {
+        				   "home":"dictionary([addresses])",
+        				   "work":"dictionary([addresses])"
+        				}	
+        			]
+                }],
+            "duration": 0
+        }]
+}

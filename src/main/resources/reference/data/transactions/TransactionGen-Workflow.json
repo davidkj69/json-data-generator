@@ -1,0 +1,16 @@
+{
+    "eventFrequency": 10,
+    "varyEventFrequency": true,
+    "repeatWorkflow": true,
+    "timeBetweenRepeat": 15,
+    "varyRepeatFrequency": true,
+    "steps": [{
+            "config": [{
+            		"timestamp": "nowTimestamp()",
+        			"account": "dictionary([account-numbers])",
+        			"amount" : "random(1.00, 500.00)",
+        			"type" : "random('Debit','Credit')"
+                }],
+            "duration": 0
+        }]
+}

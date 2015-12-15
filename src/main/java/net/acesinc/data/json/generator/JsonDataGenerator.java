@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package net.acesinc.data.json.generator;
 
@@ -23,6 +31,8 @@ import org.apache.logging.log4j.Logger;
  * @author andrewserff
  */
 public class JsonDataGenerator {
+	
+	private static final String DEFAULT_SIMULATION_CONFIG = "defaultSimConfig.json";
 
     private static final Logger log = LogManager.getLogger(JsonDataGenerator.class);
 
@@ -39,8 +49,8 @@ public class JsonDataGenerator {
                 String elType = (String) elProps.get("type");
                 switch (elType) {
                     case "logger": {
-                        log.info("Adding Log4JLogger Producer");
-                        loggers.add(new Log4JLogger());
+                        log.info("Adding Log4JLogger Producer with properties" + elProps);
+                        loggers.add(new Log4JLogger(elProps));
                         break;
                     }
                     case "kafka": { 
@@ -80,7 +90,7 @@ public class JsonDataGenerator {
     }
 
     public static void main(String[] args) {
-        String simConfig = "defaultSimConfig.json";
+        String simConfig = DEFAULT_SIMULATION_CONFIG;
         if (args.length > 0) {
             simConfig = args[0];
             log.info("Overriding Simulation Config file from command line to use [ " + simConfig + " ]");
@@ -106,7 +116,7 @@ public class JsonDataGenerator {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
-                //wakie wakie!
+                // wakie wakie!
             }
         }
 

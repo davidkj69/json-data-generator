@@ -31,6 +31,17 @@
                 <SizeBasedTriggeringPolicy size="5 MB"/>
             </Policies>
         </RollingFile>
+        <RollingFile name="Generated-Data" fileName="logs/generated-data.json"
+                     filePattern="logs/$${date:yyyy-MM}/generated-data-%d{MM-dd-yyyy}-%i.json">
+            <PatternLayout>
+                <Pattern>%m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+            </Policies>
+        </RollingFile>
+        
         <Console name="STDOUT" target="SYSTEM_OUT">
             <PatternLayout>
                 <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
@@ -44,6 +55,10 @@
         </logger>
         <logger name="data-logger" level="info">
             <AppenderRef ref="RollingFile-Data"/>
+            <AppenderRef ref="STDOUT"/>
+        </logger>
+        <logger name="Generated-Logger" level="info">
+            <AppenderRef ref="Generated-Data"/>
             <AppenderRef ref="STDOUT"/>
         </logger>
         <Root level="error">

@@ -1,0 +1,10 @@
+{
+    "workflows": [{
+            "workflowName": "Customer Generation",
+            "workflowFilename": "reference/data/customer/CustomerGenWorkflow.json"
+        }],
+    "producers": [{
+        "type":"logger",
+        "logger-name": "Generated-Logger"
+    }]
+}

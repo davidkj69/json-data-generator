@@ -1,11 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package net.acesinc.data.json.generator;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
@@ -13,12 +24,18 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import javax.json.JsonValue;
 import javax.json.stream.JsonGenerator;
 import javax.json.stream.JsonGeneratorFactory;
+
 import net.acesinc.data.json.generator.types.TypeHandler;
 import net.acesinc.data.json.generator.types.TypeHandlerFactory;
 import net.acesinc.data.json.util.JsonUtils;
+
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -240,8 +257,25 @@ public class RandomJsonGenerator {
             gen.write(propName, (Double) val);
         } else if (Date.class.isAssignableFrom(val.getClass())) {
             gen.write(propName, iso8601DF.format((Date) val));
+        } else if (Map.class.isAssignableFrom(val.getClass())) {
+        	// Convert the map to a JSON string and then read it
+        	JsonReader jsonReader = Json.createReader(new ByteArrayInputStream(toJson(val).getBytes()));
+        	JsonObject object = jsonReader.readObject();
+        	gen.write(propName, object);
         }
+        
         return gen;
+    }
+    
+    private String toJson(Object o) {
+        ObjectMapper mapper = new ObjectMapper();
+        String json = null;
+        try {
+            json = mapper.writeValueAsString(o);
+        } catch (JsonProcessingException ex) {
+            log.warn("Error parsing object into json", ex);
+        }
+        return json;
     }
 
 }

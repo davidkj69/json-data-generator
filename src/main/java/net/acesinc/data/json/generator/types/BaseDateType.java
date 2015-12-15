@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package net.acesinc.data.json.generator.types;
 
@@ -19,11 +27,18 @@ public abstract class BaseDateType extends TypeHandler {
 
     private Date min;
     private Date max;
-//    public static final SimpleDateFormat INPUT_DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd'T'HH:mm:ss");
+
     public static final ThreadLocal<DateFormat> INPUT_DATE_FORMAT = new ThreadLocal<DateFormat>() {
         @Override
         protected DateFormat initialValue() {
             return new SimpleDateFormat("yyyy/MM/dd'T'HH:mm:ss");
+        }
+    };
+    
+    public static final ThreadLocal<DateFormat> SHORT_DATE_FORMAT = new ThreadLocal<DateFormat>() {
+        @Override
+        protected DateFormat initialValue() {
+            return new SimpleDateFormat("yyyy/MM/dd");
         }
     };
 
@@ -40,7 +55,11 @@ public abstract class BaseDateType extends TypeHandler {
             } else if (launchArguments.length == 1) {
                 //min only
                 try {
-                    min = INPUT_DATE_FORMAT.get().parse(stripQuotes(launchArguments[0]));
+                	if (launchArguments[0].length() == 12) {
+                		min = SHORT_DATE_FORMAT.get().parse(stripQuotes(launchArguments[0]));
+                	} else {
+                		min = INPUT_DATE_FORMAT.get().parse(stripQuotes(launchArguments[0]));
+                	}
                 } catch (ParseException pe) {
                     long timeOffset = NowBaseType.getTimeOffset(stripQuotes(launchArguments[0]));
                     min = new Date(new Date().getTime() + timeOffset);

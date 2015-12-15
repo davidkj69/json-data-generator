@@ -1,0 +1,13 @@
+{
+    "eventFrequency": 10,
+    "varyEventFrequency": true,
+    "repeatWorkflow": true,
+    "timeBetweenRepeat": 15,
+    "varyRepeatFrequency": true,
+    "steps": [{
+            "config": [{
+        			"ssn": "ssn()"	
+                }],
+            "duration": 0
+        }]
+}
