@@ -1,0 +1,16 @@
+{
+    "workflows": [{
+            "workflowName": "Account Generation",
+            "workflowFilename": "reference/data/account/AccountGen-Workflow.json"
+        }],
+    "producers": [{
+            "type": "kafka",
+            "broker.server": "bd01vox110.wellsfargo.com",
+            "broker.port": 6667,
+            "topic": "account_raw",
+            "sync": false
+    },{
+        "type":"logger",
+        "logger-name": "Generated-Logger"
+    }]
+}

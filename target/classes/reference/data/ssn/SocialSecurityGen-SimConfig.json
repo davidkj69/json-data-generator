@@ -1,0 +1,10 @@
+{
+    "workflows": [{
+            "workflowName": "SSN Generation",
+            "workflowFilename": "reference/data/ssn/SocialSecurityGen-Workflow.json"
+        }],
+    "producers": [{
+        "type":"logger",
+        "logger-name": "Generated-SSN-Logger"
+    }]
+}

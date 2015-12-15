@@ -25,6 +25,10 @@
             <name>Andrew Serff</name>
             <url>https://github.com/andrewserff</url>
         </developer>
+        <developer>
+            <name>David Kjerrumgaard</name>
+            <url>https://github.com/davidkj69</url>
+        </developer>
     </developers>
     
     <properties>

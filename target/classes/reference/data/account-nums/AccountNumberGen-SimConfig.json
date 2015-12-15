@@ -1,0 +1,10 @@
+{
+    "workflows": [{
+            "workflowName": "Account Number Generation",
+            "workflowFilename": "reference/data/account-nums/AccountNumberGen-Workflow.json"
+        }],
+    "producers": [{
+        "type":"logger",
+        "logger-name": "Generated-Logger"
+    }]
+}

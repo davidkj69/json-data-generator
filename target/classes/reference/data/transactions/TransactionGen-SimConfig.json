@@ -1,0 +1,10 @@
+{
+    "workflows": [{
+            "workflowName": "Transaction Generation",
+            "workflowFilename": "reference/data/transactions/TransactionGen-Workflow.json"
+        }],
+    "producers": [{
+        "type":"logger",
+        "logger-name": "Generated-Logger"
+    }]
+}

@@ -1,0 +1,15 @@
+{
+    "eventFrequency": 10,
+    "varyEventFrequency": true,
+    "repeatWorkflow": true,
+    "timeBetweenRepeat": 15,
+    "varyRepeatFrequency": true,
+    "steps": [{
+            "config": [{
+        			"accountNumber": "dictionary([account-numbers])",
+        			"ssn" : "dictionary([soc-security-nums])",
+        			"type" : "random('savings','checking')"
+                }],
+            "duration": 0
+        }]
+}
